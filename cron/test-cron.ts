@@ -7,3 +7,7 @@ export async function main() {
 
     console.info('Cron job started');
 }
+
+if (require.main === module) {
+    main();
+}
