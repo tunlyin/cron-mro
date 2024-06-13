@@ -1,17 +1,10 @@
 // app/api/cron/route.ts
 import { NextRequest, NextResponse } from 'next/server';
-import { execa } from 'execa';
-import path from 'path';
+import { main } from '../../../cron/test-cron';
 
 export async function GET(req: NextRequest) {
     try {
-        const scriptPath = path.resolve('cron/test-cron.ts');
-        const subprocess = execa('tsx', [scriptPath], {
-            detached: true,
-            stdio: 'ignore'
-        });
-        subprocess.unref();
-
+        main();
         return NextResponse.json({ message: 'Cron job started' }, { status: 200 });
     } catch (error) {
         console.error('Error starting cron job:', error);
