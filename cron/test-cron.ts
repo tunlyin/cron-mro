@@ -1,7 +1,7 @@
 import schedule from 'node-schedule';
 
 export async function main() {
-    schedule.scheduleJob('* * * * *', function() {
+    schedule.scheduleJob('* * * * * *', function() {
         console.log('The answer to life, the universe, and everything!');
     });
 
